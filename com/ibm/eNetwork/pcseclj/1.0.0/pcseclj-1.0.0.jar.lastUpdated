@@ -1,0 +1,16 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jun 11 11:23:35 EET 2018
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/thirdparty/.lastUpdated=1528705415115
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/JbossTechpreviewAll/.lastUpdated=1528705414907
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/SonaType/.lastUpdated=1528705415005
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/JbossTechpreviewAll/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/thirdparty/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/JbossPublic/.lastUpdated=1528705414791
+@default-hostAccess-https\://abs-e2e-tt-nexus.dev.adp.allianz/repository/hostaccess/.lastUpdated=1528451619839
+https\://abs-e2e-tt-nexus.dev.adp.allianz/repository/hostaccess/.error=Could not transfer artifact com.ibm.eNetwork\:pcseclj\:jar\:1.0.0 from/to hostAccess (https\://abs-e2e-tt-nexus.dev.adp.allianz/repository/hostaccess/)\: sun.security.validator.ValidatorException\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/JbossPublic/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/SonaType/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/Spring/.lastUpdated=1528705414850
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/Spring/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/central/.error=
+http\://absnexus01.allianz-tr.local\:8081/nexus/content/repositories/central/.lastUpdated=1528705414739

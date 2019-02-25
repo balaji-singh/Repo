@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.allianz.azt.test</groupId>
+  <artifactId>build.endtoend.azt</artifactId>
+  <version>17.5.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20180608130327</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>17.5.0-SNAPSHOT</value>
+        <updated>20180608130327</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

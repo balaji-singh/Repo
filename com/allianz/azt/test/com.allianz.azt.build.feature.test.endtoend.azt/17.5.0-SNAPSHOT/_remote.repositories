@@ -1,0 +1,7 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jun 08 16:03:33 EET 2018
+com.allianz.azt.build.feature.test.endtoend.azt-17.5.0-SNAPSHOT.jar>=
+com.allianz.azt.build.feature.test.endtoend.azt-17.5.0-SNAPSHOT-sources-feature.jar>=
+com.allianz.azt.build.feature.test.endtoend.azt-17.5.0-SNAPSHOT.pom>=
+com.allianz.azt.build.feature.test.endtoend.azt-17.5.0-SNAPSHOT-p2metadata.xml>=
+com.allianz.azt.build.feature.test.endtoend.azt-17.5.0-SNAPSHOT-p2artifacts.xml>=

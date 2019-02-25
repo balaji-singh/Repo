@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jun 08 16:03:34 EET 2018
+build.endtoend.azt.p2repo-17.5.0-SNAPSHOT-p2artifacts.xml>=
+build.endtoend.azt.p2repo-17.5.0-SNAPSHOT-p2metadata.xml>=
+build.endtoend.azt.p2repo-17.5.0-SNAPSHOT.pom>=
+build.endtoend.azt.p2repo-17.5.0-SNAPSHOT.zip>=

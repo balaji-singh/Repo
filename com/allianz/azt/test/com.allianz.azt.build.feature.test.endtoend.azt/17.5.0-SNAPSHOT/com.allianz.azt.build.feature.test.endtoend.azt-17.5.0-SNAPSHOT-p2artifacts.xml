@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='org.eclipse.update.feature' id='com.allianz.azt.build.feature.test.endtoend.azt' version='17.5.0.201806081303'>
+    <properties size='6'>
+      <property name='artifact.size' value='822'/>
+      <property name='download.size' value='822'/>
+      <property name='maven-groupId' value='com.allianz.azt.test'/>
+      <property name='maven-artifactId' value='com.allianz.azt.build.feature.test.endtoend.azt'/>
+      <property name='maven-version' value='17.5.0-SNAPSHOT'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+  <artifact classifier='org.eclipse.update.feature' id='com.allianz.azt.build.feature.test.endtoend.azt.source' version='17.5.0.201806081303'>
+    <properties size='7'>
+      <property name='artifact.size' value='2508'/>
+      <property name='download.size' value='2508'/>
+      <property name='maven-groupId' value='com.allianz.azt.test'/>
+      <property name='maven-artifactId' value='com.allianz.azt.build.feature.test.endtoend.azt'/>
+      <property name='maven-version' value='17.5.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources-feature'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+</artifacts>

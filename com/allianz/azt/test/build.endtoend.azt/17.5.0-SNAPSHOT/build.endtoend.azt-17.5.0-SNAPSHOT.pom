@@ -1,0 +1,555 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.allianz.azt.test</groupId>
+	<artifactId>build.endtoend.azt</artifactId>
+	<version>17.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<properties>
+	<!-- encoding -->
+		<abs.core.version>17.5.303.36</abs.core.version>
+		<brokerportal.plugins.p2.version>${abs.core.version}</brokerportal.plugins.p2.version>
+
+		<repository.abs.core.version>${abs.core.version}</repository.abs.core.version>
+	<!-- encoding -->
+		<project.build.sourceEncoding>Cp1252</project.build.sourceEncoding>
+
+		<!-- commons -->
+		<commons-lang.version>2.4</commons-lang.version>
+		<commons-lang3.version>3.2.1</commons-lang3.version>
+		<commons-logging.version>1.1.3</commons-logging.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-io.version>1.4</commons-io.version>
+		<commons-net.version>3.3</commons-net.version>
+
+		<!-- tycho -->
+		<tycho.version>0.24.0</tycho.version>
+		<tycho-extras.version>${tycho.version}</tycho-extras.version>
+		<tycho.versions.plugin>1.0.0</tycho.versions.plugin>
+
+		<!-- servlet -->
+		<javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+
+		<!-- jakson -->
+		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+
+		<!-- maven -->
+		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
+		<buildnumber-maven-plugin.version>1.2</buildnumber-maven-plugin.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+		<maven-release-plugin.version>2.3.2</maven-release-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-ear-plugin.version>2.9</maven-ear-plugin.version>
+		<maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
+		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+		<maven-assembly-plugin.verion>3.0.0</maven-assembly-plugin.verion>
+		<maven-rpm-plugin.version>2.1.5</maven-rpm-plugin.version>
+		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+
+		<!-- maven-compiler -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- xml parser -->
+		<xmlParserAPIs.version>2.6.2</xmlParserAPIs.version>
+
+		<!-- jaxws -->
+		<jax.ws.version>2.2.8-b13729</jax.ws.version>
+
+		<!-- javax -->
+		<javax.el.version>2.2.1</javax.el.version>
+
+		<!-- junit -->
+		<junit.version>4.11</junit.version>
+		<!-- maven-compiler -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- xml parser -->
+		<xmlParserAPIs.version>2.6.2</xmlParserAPIs.version>
+
+		<!-- jaxws -->
+		<jax.ws.version>2.2.8-b13729</jax.ws.version>
+
+		<!-- javax -->
+		<javax.el.version>2.2.1</javax.el.version>
+
+		<!-- junit -->
+		<junit.version>4.11</junit.version>
+		
+		<!-- nexus -->
+		<nexus.url>http://absnexus01.allianz-tr.local:8081/nexus</nexus.url>
+		<nexus.core.url>${nexus.url}/content</nexus.core.url>
+		<nexus.deployment.releases.url>${nexus.core.url}/repositories/releases</nexus.deployment.releases.url>
+		<nexus.deployment.snapshots.url>${nexus.core.url}/repositories/snapshots</nexus.deployment.snapshots.url>
+		<nexus.central.repository.url>${nexus.core.url}/repositories/central/</nexus.central.repository.url>
+
+				<!--                   http://absnexus01.allianz-tr.local:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/test/at.allianz.abs.test.p2/17.0.307.10/at.allianz.abs.test.p2-17.0.307.10.zip-unzip/ -->
+		<repository.abs.test.id>at.allianz.abs.test.p2</repository.abs.test.id>
+		<repository.abs.test.version>${repository.abs.core.version}</repository.abs.test.version>
+		<repository.abs.test.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/test/${repository.abs.test.id}/${repository.abs.core.version}/${repository.abs.test.id}-${repository.abs.core.version}.zip-unzip/</repository.abs.test.url>
+
+		<!-- sonar -->
+		<sonar-plugin.version>3.2</sonar-plugin.version>
+		
+		<!-- plexus -->
+		<plexus-archiver-maven-plugin.version>3.4</plexus-archiver-maven-plugin.version>
+		
+		<!-- ear -->
+		<slf4j-log4j12>1.7.20</slf4j-log4j12>
+		
+		<git.branch>master</git.branch>
+		
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/at.allianz.abs.core.targetplatform.di/3.8.1/at.allianz.abs.core.targetplatform.di-3.8.1.zip-unzip/ -->
+		<repository.core.targetplatform.di.id>at.allianz.abs.core.targetplatform.di</repository.core.targetplatform.di.id>
+		<repository.core.targetplatform.di.version>3.8.1</repository.core.targetplatform.di.version>
+		<repository.core.targetplatform.di.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/${repository.core.targetplatform.di.id}/${repository.core.targetplatform.di.version}/${repository.core.targetplatform.di.id}-${repository.core.targetplatform.di.version}.zip-unzip/</repository.core.targetplatform.di.url>
+
+		<!-- common -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/common/at.allianz.targetplatform.common.p2/4.5.2.20160826122872/at.allianz.targetplatform.common.p2-4.5.2.20160826122872.zip-unzip/ -->
+		<repository.core.targetplatform.common.id>at.allianz.targetplatform.common.p2</repository.core.targetplatform.common.id>
+		<repository.core.targetplatform.common.version>4.5.2.20171013102800</repository.core.targetplatform.common.version>
+		<repository.core.targetplatform.common.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/common/${repository.core.targetplatform.common.id}/${repository.core.targetplatform.common.version}/${repository.core.targetplatform.common.id}-${repository.core.targetplatform.common.version}.zip-unzip/</repository.core.targetplatform.common.url>
+
+		<!-- common test -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/common/test/at.allianz.targetplatform.common.test.p2/4.5.2.20160420182033/at.allianz.targetplatform.common.test.p2-4.5.2.20160420182033.zip-unzip/plugins/ -->
+		<repository.core.targetplatform.common.test.id>at.allianz.targetplatform.common.test.p2</repository.core.targetplatform.common.test.id>
+		<repository.core.targetplatform.common.test.version>4.5.2.20170213180800</repository.core.targetplatform.common.test.version>
+		<repository.core.targetplatform.common.test.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/common/test/${repository.core.targetplatform.common.test.id}/${repository.core.targetplatform.common.test.version}/${repository.core.targetplatform.common.test.id}-${repository.core.targetplatform.common.test.version}.zip-unzip/</repository.core.targetplatform.common.test.url>
+
+		<!-- birt -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/birt/osgi/runtime/at.allianz.targetplatform.birt.osgi.runtime.p2/4.5.2.20161122083334/at.allianz.targetplatform.birt.osgi.runtime.p2-4.5.2.20161122083334.zip-unzip/ -->
+		<repository.core.targetplatform.birt.id>at.allianz.targetplatform.birt.osgi.runtime.p2</repository.core.targetplatform.birt.id>
+		<repository.core.targetplatform.birt.version>4.5.2.20161122083334</repository.core.targetplatform.birt.version>
+		<repository.core.targetplatform.birt.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/birt/osgi/runtime/${repository.core.targetplatform.birt.id}/${repository.core.targetplatform.birt.version}/${repository.core.targetplatform.birt.id}-${repository.core.targetplatform.birt.version}.zip-unzip/</repository.core.targetplatform.birt.url>
+
+		<!-- datatools -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/datatools/connectivity/oda/at.allianz.targetplatform.datatools.connectivity.oda.p2/4.5.2.20160427135444/at.allianz.targetplatform.datatools.connectivity.oda.p2-4.5.2.20160427135444.zip-unzip/ -->
+		<repository.core.targetplatform.datatools.id>at.allianz.targetplatform.datatools.connectivity.oda.p2</repository.core.targetplatform.datatools.id>
+		<repository.core.targetplatform.datatools.version>4.5.2.20160427135444</repository.core.targetplatform.datatools.version>
+		<repository.core.targetplatform.datatools.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/datatools/connectivity/oda/${repository.core.targetplatform.datatools.id}/${repository.core.targetplatform.datatools.version}/${repository.core.targetplatform.datatools.id}-${repository.core.targetplatform.datatools.version}.zip-unzip/</repository.core.targetplatform.datatools.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/datatools/rcp/at.allianz.targetplatform.datatools.rcp.p2/4.5.2.20161025115255/at.allianz.targetplatform.datatools.rcp.p2-4.5.2.20161025115255.zip-unzip/ -->
+		<repository.core.targetplatform.datatools.rcp.id>at.allianz.targetplatform.datatools.rcp.p2</repository.core.targetplatform.datatools.rcp.id>
+		<repository.core.targetplatform.datatools.rcp.version>4.5.2.20161025115255</repository.core.targetplatform.datatools.rcp.version>
+		<repository.core.targetplatform.datatools.rcp.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/datatools/rcp/${repository.core.targetplatform.datatools.rcp.id}/${repository.core.targetplatform.datatools.rcp.version}/${repository.core.targetplatform.datatools.rcp.id}-${repository.core.targetplatform.datatools.rcp.version}.zip-unzip/</repository.core.targetplatform.datatools.rcp.url>
+
+		<!-- eclipse platform -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/org/eclipse/platform/org.eclipse.platform/4.5.2/org.eclipse.platform-4.5.2.zip-unzip/ -->
+		<repository.core.eclipse.platform.id>org.eclipse.platform</repository.core.eclipse.platform.id>
+		<repository.core.eclipse.platform.version>4.5.2</repository.core.eclipse.platform.version>
+		<repository.core.eclipse.platform.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/org/eclipse/platform/${repository.core.eclipse.platform.id}/${repository.core.eclipse.platform.version}/${repository.core.eclipse.platform.id}-${repository.core.eclipse.platform.version}.zip-unzip/</repository.core.eclipse.platform.url>
+
+		<!-- rest platform -->
+		<repository.core.targetplatform.rest.id>at.allianz.abs.core.targetplatform.rest</repository.core.targetplatform.rest.id>
+		<repository.core.targetplatform.rest.version>1.5.1</repository.core.targetplatform.rest.version>
+		<repository.core.targetplatform.rest.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/${repository.core.targetplatform.rest.id}/${repository.core.targetplatform.rest.version}/${repository.core.targetplatform.rest.id}-${repository.core.targetplatform.rest.version}.zip-unzip</repository.core.targetplatform.rest.url>
+
+		<!-- webservice platform -->
+		<repository.core.targetplatform.webservice.id>at.allianz.targetplatform.webservice.p2</repository.core.targetplatform.webservice.id>
+		<repository.core.targetplatform.webservice.version>4.5.2.20160420164223</repository.core.targetplatform.webservice.version>
+		<repository.core.targetplatform.webservice.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/webservice/${repository.core.targetplatform.webservice.id}/${repository.core.targetplatform.webservice.version}/${repository.core.targetplatform.webservice.id}-${repository.core.targetplatform.webservice.version}.zip-unzip</repository.core.targetplatform.webservice.url>
+
+		<!-- direct platform -->
+<!-- 		<repository.core.targetplatform.direct.id>at.allianz.abs.core.targetplatform.direct.p2</repository.core.targetplatform.direct.id> -->
+<!-- 		<repository.core.targetplatform.direct.version>1.13.1.0</repository.core.targetplatform.direct.version> -->
+<!-- 		<repository.core.targetplatform.direct.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/direct/${repository.core.targetplatform.direct.id}/${repository.core.targetplatform.direct.version}/${repository.core.targetplatform.direct.id}-${repository.core.targetplatform.direct.version}.zip-unzip</repository.core.targetplatform.direct.url> -->
+
+		<!-- rap -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/at.allianz.abs.core.targetplatform.rap/3.1.0.201605041417a/at.allianz.abs.core.targetplatform.rap-3.1.0.201605041417a.zip-unzip -->
+		<repository.core.targetplatform.rap.id>at.allianz.abs.core.targetplatform.rap</repository.core.targetplatform.rap.id>
+		<repository.core.targetplatform.rap.version>3.1.0.201605041417a</repository.core.targetplatform.rap.version>
+		<repository.core.targetplatform.rap.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/${repository.core.targetplatform.rap.id}/${repository.core.targetplatform.rap.version}/${repository.core.targetplatform.rap.id}-${repository.core.targetplatform.rap.version}.zip-unzip</repository.core.targetplatform.rap.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/at.allianz.abs.core.targetplatform.rap.targetcomponents/3.1.0.201608221051/at.allianz.abs.core.targetplatform.rap.targetcomponents-3.1.0.201608221051.zip-unzip -->
+		<repository.core.targetplatform.rap.targetcomponents.id>at.allianz.abs.core.targetplatform.rap.targetcomponents</repository.core.targetplatform.rap.targetcomponents.id>
+		<repository.core.targetplatform.rap.targetcomponents.version>3.1.0.201704211250</repository.core.targetplatform.rap.targetcomponents.version>
+		<repository.core.targetplatform.rap.targetcomponents.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/targetplatform/${repository.core.targetplatform.rap.targetcomponents.id}/${repository.core.targetplatform.rap.targetcomponents.version}/${repository.core.targetplatform.rap.targetcomponents.id}-${repository.core.targetplatform.rap.targetcomponents.version}.zip-unzip</repository.core.targetplatform.rap.targetcomponents.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/abscore/at.allianz.abs.abscore.rap.p2/16.5.301.24/at.allianz.abs.abscore.rap.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.rap.id>at.allianz.abs.abscore.rap.p2</repository.abs.rap.id>
+		<repository.abs.rap.version>${repository.abs.core.version}</repository.abs.rap.version>
+		<repository.abs.rap.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/abscore/${repository.abs.rap.id}/${repository.abs.rap.version}/${repository.abs.rap.id}-${repository.abs.rap.version}.zip-unzip/</repository.abs.rap.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/core/platform/at.allianz.abs.core.platform.rap.p2/16.5.301.24/at.allianz.abs.core.platform.rap.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.platform_rap.id>at.allianz.abs.core.platform.rap.p2</repository.abs.platform_rap.id>
+		<repository.abs.platform_rap.version>${repository.abs.core.version}</repository.abs.platform_rap.version>
+		<repository.abs.platform_rap.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/platform/${repository.abs.platform_rap.id}/${repository.abs.platform_rap.version}/${repository.abs.platform_rap.id}-${repository.abs.platform_rap.version}.zip-unzip/</repository.abs.platform_rap.url>
+
+		<!-- direct -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/direct/at.allianz.abs.direct.p2/16.5.301.24/at.allianz.abs.direct.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.direct.id>at.allianz.abs.direct.p2</repository.abs.direct.id>
+		<repository.abs.direct.version>${repository.abs.core.version}</repository.abs.direct.version>
+		<repository.abs.direct.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/direct/${repository.abs.direct.id}/${repository.abs.platform.version}/${repository.abs.direct.id}-${repository.abs.platform.version}.zip-unzip/</repository.abs.direct.url>
+
+		<!-- rcp -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/rcp/at.allianz.targetplatform.rcp.p2/4.5.2.20160822084555/at.allianz.targetplatform.rcp.p2-4.5.2.20160822084555.zip-unzip -->
+		<repository.core.targetplatform.rcp.id>at.allianz.targetplatform.rcp.p2</repository.core.targetplatform.rcp.id>
+		<repository.core.targetplatform.rcp.version>4.5.2.20160822084555</repository.core.targetplatform.rcp.version>
+		<repository.core.targetplatform.rcp.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/targetplatform/rcp/${repository.core.targetplatform.rcp.id}/${repository.core.targetplatform.rcp.version}/${repository.core.targetplatform.rcp.id}-${repository.core.targetplatform.rcp.version}.zip-unzip</repository.core.targetplatform.rcp.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/core/platform/at.allianz.abs.core.platform.rcp.p2/16.5.301.24/at.allianz.abs.core.platform.rcp.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.platform.id>at.allianz.abs.core.platform.rcp.p2</repository.abs.platform.id>
+		<repository.abs.platform.version>${repository.abs.core.version}</repository.abs.platform.version>
+		<repository.abs.platform.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/core/platform/${repository.abs.platform.id}/${repository.abs.platform.version}/${repository.abs.platform.id}-${repository.abs.platform.version}.zip-unzip/</repository.abs.platform.url>
+
+		<!-- abs core -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/abscore/at.allianz.abs.abscore.p2/16.5.301.24/at.allianz.abs.abscore.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.abscore.id>at.allianz.abs.abscore.p2</repository.abs.abscore.id>
+		<repository.abs.abscore.version>${repository.abs.core.version}</repository.abs.abscore.version>
+		<repository.abs.abscore.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/abscore/${repository.abs.abscore.id}/${repository.abs.abscore.version}/${repository.abs.abscore.id}-${repository.abs.abscore.version}.zip-unzip/</repository.abs.abscore.url>
+
+
+
+		<!-- configsuite -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/configurationsuite/at.allianz.abs.configurationsuite.p2/16.5.301.24/at.allianz.abs.configurationsuite.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.configurationsuite.id>at.allianz.abs.configurationsuite.p2</repository.abs.configurationsuite.id>
+		<repository.abs.configurationsuite.version>${repository.abs.core.version}</repository.abs.configurationsuite.version>
+		<repository.abs.configurationsuite.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/configurationsuite/${repository.abs.configurationsuite.id}/${repository.abs.abscore.version}/${repository.abs.configurationsuite.id}-${repository.abs.configurationsuite.version}.zip-unzip/</repository.abs.configurationsuite.url>
+
+		<!-- test -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/test/at.allianz.abs.test.p2/16.5.301.24/at.allianz.abs.test.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.test.id>at.allianz.abs.test.p2</repository.abs.test.id>
+		<repository.abs.test.version>${repository.abs.core.version}</repository.abs.test.version>
+		<repository.abs.test.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/test/${repository.abs.test.id}/${repository.abs.test.version}/${repository.abs.test.id}-${repository.abs.test.version}.zip-unzip/</repository.abs.test.url>
+
+
+
+		<!-- brokerportal -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/gfb/core/brokerportal/at.allianz.gfb.core.brokerportal.plugins.p2/16.5.301.24/at.allianz.gfb.core.brokerportal.plugins.p2-16.5.301.24.zip-unzip/ -->
+		<repository.brokerportal.plugins.p2.id>brokerportal.plugins</repository.brokerportal.plugins.p2.id>
+		<repository.brokerportal.plugins.p2.version>${brokerportal.plugins.p2.version}</repository.brokerportal.plugins.p2.version>
+		<repository.brokerportal.plugins.p2.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/gfb/core/brokerportal/at.allianz.gfb.core.brokerportal.plugins.p2/${repository.brokerportal.plugins.p2.version}/at.allianz.gfb.core.brokerportal.plugins.p2-${repository.brokerportal.plugins.p2.version}.zip-unzip/</repository.brokerportal.plugins.p2.url>
+
+
+
+
+		<!-- web libs -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/web/libs/web.libs.p2/16.5.301.24/web.libs.p2-16.5.301.24.zip-unzip/ -->
+		<repository.web.libs.p2.id>weblibs</repository.web.libs.p2.id>
+		<repository.web.libs.p2.version>${repository.abs.core.version}</repository.web.libs.p2.version>
+		<repository.web.libs.p2.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/web/libs/web.libs.p2/${repository.web.libs.p2.version}/web.libs.p2-${repository.web.libs.p2.version}.zip-unzip/</repository.web.libs.p2.url>
+
+		<!-- webprojects -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/webprojects/webprojects.p2/16.5.301.24/webprojects.p2-16.5.301.24.zip-unzip/ -->
+		<repository.webprojects.p2.id>webprojects</repository.webprojects.p2.id>
+		<repository.webprojects.p2.version>${repository.abs.core.version}</repository.webprojects.p2.version>
+		<repository.webprojects.p2.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/webprojects/webprojects.p2/${repository.webprojects.p2.version}/webprojects.p2-${repository.webprojects.p2.version}.zip-unzip/</repository.webprojects.p2.url>
+
+		<!-- www_platform -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/www_platform/at.allianz.abs.www_platform.p2/16.5.301.24/at.allianz.abs.www_platform.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.www_platform.p2.id>at.allianz.abs.www_platform.p2</repository.abs.www_platform.p2.id>
+		<repository.abs.www_platform.p2.version>${repository.abs.core.version}</repository.abs.www_platform.p2.version>
+		<repository.abs.www_platform.p2.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/www_platform/at.allianz.abs.www_platform.p2/${repository.abs.www_platform.p2.version}/at.allianz.abs.www_platform.p2-${repository.abs.www_platform.p2.version}.zip-unzip/</repository.abs.www_platform.p2.url>
+
+
+		<!-- webservice -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/at/allianz/abs/webservice/at.allianz.abs.core.web.service.p2/16.5.301.24/at.allianz.abs.core.web.service.p2-16.5.301.24.zip-unzip/ -->
+		<repository.abs.core.web.service.p2.id>at.allianz.abs.core.web.service.p2</repository.abs.core.web.service.p2.id>
+		<repository.abs.core.web.service.p2.version>${repository.abs.core.version}</repository.abs.core.web.service.p2.version>
+		<repository.abs.core.web.service.p2.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/at/allianz/abs/webservice/${repository.abs.core.web.service.p2.id}/${repository.abs.core.web.service.p2.version}/${repository.abs.core.web.service.p2.id}-${repository.abs.core.web.service.p2.version}.zip-unzip/</repository.abs.core.web.service.p2.url>
+
+
+
+		<!-- bnl repository -->
+		<!-- NOT ACCESSABLE -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/unzip/abs-core-deliveries-zip/be/allianz/eclipse-deltapack/4.3.2/eclipse-deltapack-4.3.2.zip-unzip/ -->
+		<repository.abs.deltapack.id>bnl.deltapack</repository.abs.deltapack.id>
+		<repository.abs.deltapack.version>4.3.2</repository.abs.deltapack.version>
+		<repository.abs.deltapack.url>${nexus.core.url}/unzip/abs-core-deliveries-zip/be/allianz/eclipse-deltapack/${repository.abs.deltapack.version}/eclipse-deltapack-${repository.abs.deltapack.version}.zip-unzip/</repository.abs.deltapack.url>
+
+
+
+
+		<!-- non p2 -->
+		<!-- MISSING -->
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/repositories/allianz/at/allianz/abs/soa/at.allianz.abs.soa.technical/ -->
+		<repository.abs.soa.technical.id>soa.technical</repository.abs.soa.technical.id>
+		<repository.abs.soa.technical.version>${repository.abs.core.version}</repository.abs.soa.technical.version>
+		<repository.abs.soa.technical.url>${nexus.core.url}/repositories/allianz/at/allianz/abs/soa/at.allianz.abs.soa.technical/</repository.abs.soa.technical.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/repositories/allianz/at/allianz/abs/soa/at.allianz.abs.soa.commons/ -->
+		<repository.abs.soa.commons.id>soa.commons</repository.abs.soa.commons.id>
+		<repository.abs.soa.commons.version>${repository.abs.core.version}</repository.abs.soa.commons.version>
+		<repository.abs.soa.commons.url>${nexus.core.url}/repositories/allianz/at/allianz/abs/soa/at.allianz.abs.soa.commons/</repository.abs.soa.commons.url>
+
+		<!-- http://lx-cisind01.aeat.allianz.at:8081/nexus/content/repositories/allianz/at/allianz/gfb/core/identity/common/at.allianz.gfb.core.identity.common/ -->
+		<repository.abs.common.identity.id>at.allianz.gfb.core.identity.common</repository.abs.common.identity.id>
+		<repository.abs.common.identity.version>${abs.core.version}</repository.abs.common.identity.version>
+		<repository.abs.common.identity.url>${nexus.core.url}/repositories/allianz/at/allianz/gfb/core/identity/common/at.allianz.gfb.core.identity.common/</repository.abs.common.identity.url>
+
+	</properties>
+		<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+                    <skipArchive>true</skipArchive>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho.versions-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<!--<extensions>true</extensions>-->
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<phase>package</phase>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<includeBinaryFeature>false</includeBinaryFeature>
+					<excludes>
+						<plugin id="org.eclipse.equinox.http.registry"/>
+						<plugin id="org.eclipse.equinox.http.servlet"/>
+						<plugin id="org.eclipse.equinox.http.servletbridge"/>
+						<plugin id="javax.servlet"/>
+						<plugin id="com.allianz.gep.base.external"/>
+						<plugin id="org.apache.commons.lang3"/>
+					</excludes>
+					<skip>${tycho-skip-source}</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<skip>${tycho-skip-source}</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
+				</configuration>
+			</plugin>
+	
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!-- format of the buildQualifier, the SNAPSHOT and .qualifier are replaced by this at build time -->
+				<plugin>
+				  <groupId>org.eclipse.tycho</groupId>
+				  <artifactId>tycho-packaging-plugin</artifactId>
+				  <version>${tycho.version}</version>
+				  <configuration>
+					<!--<format>'-'yyyyMMddHHmm</format>-->
+					<format>yyyyMMddHHmm</format>
+					<archive>
+					  <addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				  </configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<verbose>true</verbose>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>thirdpartyABSi</id>
+			<name>ABSi Thirdparty</name>
+			<url>file://absnfs/winshare/TestTool/Repo/thirdparty</url>
+			<layout>p2</layout>
+		</repository>
+		
+		<repository>
+			<id>hostaccess</id>
+			<url>file://absnfs/winshare/TestTool/Repo/hostaccess/repo_active</url>
+			<layout>p2</layout>
+		</repository>
+		
+		<repository>
+			<id>e2e-common</id>
+			<name>E2E Commong</name>
+			<url>file://absnfs/winshare/TestTool/Repo/e2e-common</url>
+			<layout>p2</layout>
+		</repository>
+		
+		<repository>
+			<id>tr_bo</id>
+			<name>TR Business Object</name>
+			<url>file://absnfs/winshare/TestTool/Repo/tr_bo</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.eclipse.platform.id}</id>
+			<url>${repository.core.eclipse.platform.url}</url>
+			<layout>p2</layout>
+		</repository>
+		
+		<repository>
+			<id>thirdparty</id>
+			<url>http://absnexus01.allianz-tr.local:8081/nexus/content/repositories/thirdparty/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>public</id>
+			<url>http://absnexus01.allianz-tr.local:8081/nexus/content/repositories/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+			
+			
+		<repository>
+			<id>TR-Release</id>
+			<url>http://absnexus01.allianz-tr.local:8081/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		
+		<repository>
+			<id>${repository.abs.test.id}</id>
+			<url>${repository.abs.test.url}</url>
+			<layout>p2</layout>
+		</repository>
+			
+		
+		<repository>
+			<id>${repository.core.targetplatform.di.id}</id>
+			<url>${repository.core.targetplatform.di.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.common.id}</id>
+			<url>${repository.core.targetplatform.common.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.common.test.id}</id>
+			<url>${repository.core.targetplatform.common.test.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.birt.id}</id>
+			<url>${repository.core.targetplatform.birt.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.datatools.id}</id>
+			<url>${repository.core.targetplatform.datatools.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.rap.id}</id>
+			<url>${repository.core.targetplatform.rap.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.core.targetplatform.rap.targetcomponents.id}</id>
+			<url>${repository.core.targetplatform.rap.targetcomponents.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.abs.rap.id}</id>
+			<url>${repository.abs.rap.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.abs.platform_rap.id}</id>
+			<url>${repository.abs.platform_rap.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>${repository.abs.core.web.service.p2.id}</id>
+			<url>${repository.abs.core.web.service.p2.url}</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<modules>
+		<module>plugins/com.allianz.azt.test.config</module>
+		<module>plugins/com.allianz.absi.test.utils.azt</module>
+		
+		<!-- the feature -->
+		<module>features/com.allianz.azt.build.feature.test.endtoend.azt</module>
+		
+		<!-- building as p2-site -->
+		<module>build/p2repo</module>
+	</modules>
+</project>

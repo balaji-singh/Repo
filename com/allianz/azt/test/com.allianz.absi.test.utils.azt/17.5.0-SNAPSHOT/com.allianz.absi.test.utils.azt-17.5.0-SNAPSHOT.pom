@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.allianz.azt.test</groupId>
+		<artifactId>build.endtoend.azt</artifactId>
+		<version>17.5.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>com.allianz.absi.test.utils.azt</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<dependencies>
+
+						<!-- ABSi Features -->
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>tr.allianz.abs.bo.feature</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>com.allianz.absi.build.feature.test.endtoend.common</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+
+					</dependencies>
+					<includes>
+						<include>**/AZTEndToEndTests.*</include>
+					</includes>
+					<environmentVariables>
+						<TMP>${project.build.directory}/tmp</TMP>
+					</environmentVariables>
+					<argLine>-Xmx650M -XX:PermSize=256M -Dfile.encoding=ISO-8859-1
+						-Djava.net.preferIPv4Stack=true
+						-Dabsi.lib.path="${project.build.directory}/../../com.allianz.absi.test.utils.absi/target/lib"
+						${end2end.tool.config.filename.override}
+						${end2end.tool.config.data.override} ${end2end.tool.config.values}</argLine>
+					<appArgLine>/DEBUG /CONFIGFILE=${end2end.tool.config.data}</appArgLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='osgi.bundle' id='com.allianz.absi.test.utils.azt' version='17.5.0.201806081303'>
+    <properties size='5'>
+      <property name='artifact.size' value='358663'/>
+      <property name='download.size' value='358663'/>
+      <property name='maven-groupId' value='com.allianz.azt.test'/>
+      <property name='maven-artifactId' value='com.allianz.absi.test.utils.azt'/>
+      <property name='maven-version' value='17.5.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+  <artifact classifier='osgi.bundle' id='com.allianz.absi.test.utils.azt.source' version='17.5.0.201806081303'>
+    <properties size='6'>
+      <property name='artifact.size' value='11758'/>
+      <property name='download.size' value='11758'/>
+      <property name='maven-groupId' value='com.allianz.azt.test'/>
+      <property name='maven-artifactId' value='com.allianz.absi.test.utils.azt'/>
+      <property name='maven-version' value='17.5.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+  </artifact>
+</artifacts>
