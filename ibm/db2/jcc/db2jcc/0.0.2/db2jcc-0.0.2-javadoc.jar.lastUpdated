@@ -1,0 +1,10 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Jun 14 16:52:13 IST 2018
+http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Releases/.lastUpdated=1528975333518
+http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Releases/.error=
+@default-hostAccess-http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Snapshots/.lastUpdated=1522702766541
+http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Snapshots/.error=Could not transfer artifact com.ibm.db2.jcc\:db2jcc\:jar\:javadoc\:0.0.2 from/to hostAccess (http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Snapshots/)\: Failed to transfer http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Snapshots/com/ibm/db2/jcc/db2jcc/0.0.2/db2jcc-0.0.2-javadoc.jar. Error code 400, Repository version policy\: SNAPSHOT does not allow version\: 0.0.2
+http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Thirdparty/.lastUpdated=1522702555885
+http\://absi-ci-tools.muc.allianz/nexus/repository/ABSi-Thirdparty/.error=
+http\://absi-ci-tools.muc.allianz/nexus/repository/maven-central/.lastUpdated=1522702555826
+http\://absi-ci-tools.muc.allianz/nexus/repository/maven-central/.error=
